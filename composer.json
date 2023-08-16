@@ -1,0 +1,29 @@
+{
+    "name": "lukaskleinschmidt/kirby-block-groups",
+    "description": "Kirby Block Groups",
+    "license": "MIT",
+    "type": "kirby-plugin",
+    "authors": [
+        {
+            "name": "Lukas Kleinschmidt",
+            "email": "contact@kleinschmidt.mozmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "getkirby/composer-installer": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "LukasKleinschmidt\\BlockGroups\\": "src"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "getkirby/composer-installer": true
+        }
+    },
+    "extra": {
+        "installer-name": "block-groups"
+    }
+}
