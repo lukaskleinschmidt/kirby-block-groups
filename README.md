@@ -1,8 +1,49 @@
 # Kirby Block Groups
 
 > **Note**  
-> This plugin is currently experimental and not ready for production use.
-> The documentation is very much lacking and the API is not stable yet.
+> This plugin is currently experimental and not ready for production use.  
+> The documentation is lacking at best and the API is not stable yet.
+
+## What is it for?
+
+The plugin groups blocks according to the given patterns.  
+Imagine you are looking for the following pattern:
+
+```php
+'media-card' => [
+    'media'   => Block::pattern('image|video'),
+    'heading' => Block::pattern('heading'),
+    'content' => Block::pattern('text')->count('+'),
+    'stop'    => Block::pattern('line'),
+]
+```
+The plugin will find the pattern in your `$blocks` and render those with the `blocks/groups/media-card` snippet.
+
+```diff
+- heading
+- text
+- text
+- text
++ image
++ heading
++ text
++ text
++ line
+- heading
+- text
+- list
+- text
++ video
++ heading
++ text
++ line
+- heading
+- text
+- text
+- text
+```
+
+## This and that
 
 ```php
 
@@ -26,10 +67,11 @@ BlockGroups::define([
     'media-card' => [
         'media'   => Block::pattern('image|video'),
         'heading' => Block::pattern('heading'),
-        'content' => Block::pattern('\w+')->count('+'),
+        'content' => Block::pattern('text')->count('+'),
+        'stop'    => Block::pattern('line'),
 
-        // Or maybe more specific
-        'content' => Block::pattern('text|list')->count('?'),
+        // Example for a catchall
+        'content' => Block::pattern('\w+')->count('+'),
     ],
 
     // Extended group defintion:
@@ -50,8 +92,8 @@ BlockGroups::define([
 foreach ($page->article()->toLayouts() as $layout) {
     foreach ($layout->columns() as $column) {
         echo $column->blocks()->insertGroups([
-            'media-card',
             'lines',
+            'media-card',
         ]);
     }
 }
