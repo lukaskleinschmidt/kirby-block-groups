@@ -20,27 +20,29 @@ Imagine you are looking for the following pattern:
 The plugin will find the pattern in your `$blocks` and render those with the `blocks/groups/media-card` snippet.
 
 ```diff
+heading
+text
+text
+text
+- image
 - heading
 - text
 - text
-- text
-+ image
-+ heading
-+ text
-+ text
-+ line
+- line
++ media-card
+heading
+text
+list
+text
+- video
 - heading
 - text
-- list
-- text
-+ video
-+ heading
-+ text
-+ line
-- heading
-- text
-- text
-- text
+- line
++ media-card
+heading
+text
+text
+text
 ```
 
 ## This and that
