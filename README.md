@@ -6,7 +6,7 @@
 
 ## What is it for?
 
-The plugin groups blocks according to the given patterns.  
+The plugin groups blocks according to given patterns.  
 Imagine you are looking for the following pattern:
 
 ```php
